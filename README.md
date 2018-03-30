@@ -1,24 +1,34 @@
-# README
+# Politizar
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Instructions:
 
-Things you may want to cover:
+## Ruby version
 
-* Ruby version
+## System dependencies
 
-* System dependencies
+## Configuration
 
-* Configuration
+## Database creation
 
-* Database creation
+## Database initialization
 
-* Database initialization
+## Run tests:
 
-* How to run the test suite
+```
+bundle exec rspec
 
-* Services (job queues, cache servers, search engines, etc.)
+# Run only model specs
+bundle exec rspec spec/models
 
-* Deployment instructions
+# Run only specs for AccountsController
+bundle exec rspec spec/controllers/accounts_controller_spec.rb
 
-* ...
+# Run only spec on line 8 of AccountsController
+bundle exec rspec spec/controllers/accounts_controller_spec.rb:8
+```
+
+## Services (job queues, cache servers, search engines, etc.)
+
+## Deployment instructions
+
+## ...
