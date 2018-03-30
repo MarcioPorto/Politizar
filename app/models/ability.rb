@@ -29,8 +29,10 @@ class Ability
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
 
-    can :read, :all .
     cannot :read, Subscriber
+    can :read, Country
+    can :read, Region
+    can :read, Institution
 
     if user.present?
       if user.super_admin?
