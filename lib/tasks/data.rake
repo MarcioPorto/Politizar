@@ -19,16 +19,7 @@ namespace :data do
       party = representative.css('SiglaPartidoParlamentar').text
       region = representative.css('UfParlamentar').first.content
 
-      # Representative
-      # - identifier
-      # - name
-      # - full_name
-      # - gender
-      # - position (Senador, Deputado Federal)
-      # - photo
-      # - email
-      # - party
-      # - region (PE, AL, etc...)
+      # TODO: save this data or update exisiting object appropriatelly
     end
   end
 
