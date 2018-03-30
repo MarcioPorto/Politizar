@@ -1,29 +1,27 @@
-<div class="container">
-  <h1>Politizar</h1>
+<h1>Politizar</h1>
 
-  <p>Atualmente temos <strong><%= @subscribers %></strong> emails registrados. Seja parte dos nossos primeiros 1000 usuários.</p>
+<p>Atualmente temos <strong><%= @subscribers %></strong> emails registrados. Seja parte dos nossos primeiros 1000 usuários.</p>
 
-  <h3>Entre já na nossa lista de emails.</h3>
+<h3>Entre já na nossa lista de emails.</h3>
 
-  <br>
+<br>
 
-  <div class="row">
-    <div class="col-md-6 offset-md-3 col-sm-8 offset-sm-2 col-xs-12">
-    <%= simple_form_for(@subscriber, method: :post, url: subscriptions_new_path) do |f| %>
-      <%= f.error_notification %>
+<div class="row">
+  <div class="col-md-6 offset-md-3 col-sm-8 offset-sm-2 col-xs-12">
+  <%= simple_form_for(@subscriber, method: :post, url: subscriptions_new_path) do |f| %>
+    <%= f.error_notification %>
 
-      <div class="form-inputs">
-        <%= f.input :name, label: 'Nome' %>
-        <%= f.input :email %>
-        <%= f.input :region_id, label: 'Estado', collection: @regions, label_method: :name %>
-      </div>
-
-      <div class="form-actions">
-        <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
-          Confirmar
-        <% end %>
-      </div>
-    <% end %>
+    <div class="form-inputs">
+      <%= f.input :name, label: 'Nome' %>
+      <%= f.input :email %>
+      <%= f.input :region_id, label: 'Estado', collection: @regions, label_method: :name %>
     </div>
+
+    <div class="form-actions">
+      <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+        Confirmar
+      <% end %>
+    </div>
+  <% end %>
   </div>
 </div>

@@ -1,4 +1,5 @@
 class SubscribersController < ApplicationController
+  before_action :authenticate_admin!
   before_action :set_subscriber, only: [:show, :edit, :update, :destroy]
 
   # GET /subscribers

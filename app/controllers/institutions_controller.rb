@@ -1,4 +1,5 @@
 class InstitutionsController < ApplicationController
+  before_action :authenticate_admin!
   before_action :set_institution, only: [:show, :edit, :update, :destroy]
 
   # GET /institutions
