@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   resources :subscribers
   resources :regions
 
+  post 'subscriptions/new', to: 'home#create_subscription'
+
   root 'home#index'
 
   mount RailsEmailPreview::Engine, at: 'emails'

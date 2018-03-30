@@ -52,6 +52,8 @@ The tasks listed here are in no specific order.
 - [ ] Add subscriptions
 - [ ] Choose mailing option
 - [ ] Add reCAPTCHA to subscribe form
+- [ ] Have a plan in place for when calls to retrieve data fail
+- [ ] Add Sentry for error logging
 
 ### Down the line
 
