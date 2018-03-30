@@ -85,3 +85,6 @@ gem 'whenever', '~> 0.10.0'
 
 # Preview emails in the browser
 gem 'rails_email_preview', '~> 2.0', '>= 2.0.6'
+
+# Handle unsubscribes
+gem 'mailkick', '~> 0.1.4'

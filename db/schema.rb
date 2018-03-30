@@ -10,12 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180330042607) do
+ActiveRecord::Schema.define(version: 20180330044928) do
 
   create_table "countries", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "mailkick_opt_outs", force: :cascade do |t|
+    t.string "email"
+    t.integer "subscriber_id"
+    t.string "subscriber_type"
+    t.boolean "active", default: true, null: false
+    t.string "reason"
+    t.string "list"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_mailkick_opt_outs_on_email"
+    t.index ["subscriber_id", "subscriber_type"], name: "index_mailkick_opt_outs_on_subscriber_id_and_subscriber_type"
   end
 
   create_table "regions", force: :cascade do |t|
@@ -24,6 +37,15 @@ ActiveRecord::Schema.define(version: 20180330042607) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["countries_id"], name: "index_regions_on_countries_id"
+  end
+
+  create_table "subscribers", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.integer "regions_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["regions_id"], name: "index_subscribers_on_regions_id"
   end
 
 end

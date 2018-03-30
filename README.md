@@ -41,6 +41,7 @@ The tasks listed here are in no specific order
 
 ### Near term
 
+- [x] Ability to unsubscribe
 - [ ] Add model relationships to automated tests
 - [ ] Create admin interface
 - [ ] Design UI
@@ -48,7 +49,7 @@ The tasks listed here are in no specific order
 - [ ] Design emails styling
 - [ ] Implement emails styling
 - [ ] Add subscriptions
-- [ ] Ability to manage (stop) subscriptions
+- [ ] Choose mailing option
 
 ### Down the line
 
