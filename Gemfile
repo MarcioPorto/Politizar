@@ -75,8 +75,11 @@ gem 'jquery-rails'
 
 gem 'simple_form', '~> 3.5'
 
-# gem 'devise', '~> 4.4', '>= 4.4.3'
-# gem 'cancancan', '~> 2.1', '>= 2.1.3'
+# User/Admin
+gem 'devise', '~> 4.4', '>= 4.4.3'
+
+# Permissions
+gem 'cancancan', '~> 2.1', '>= 2.1.3'
 
 # Email delivery: Postmark
 

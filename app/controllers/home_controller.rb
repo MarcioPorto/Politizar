@@ -13,7 +13,7 @@ class HomeController < ApplicationController
         format.html { redirect_to root_path, notice: 'Subscriber was successfully created.' }
         format.json { render :show, status: :created, location: @subscriber }
       else
-        format.html { redirect_to root_path, notice: 'Failed.' }
+        format.html { redirect_to root_path, alert: 'Failed.' }
         format.json { render json: @subscriber.errors, status: :unprocessable_entity }
       end
     end
