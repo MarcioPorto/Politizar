@@ -9,6 +9,6 @@ class Admin < ApplicationRecord
 
     def save_admin?
       super_admins = Admin.where(super_admin: true)
-      errors.add(:super_admin, "can't have multiple super admins") if super_admins.length >= 1
+      errors.add(:super_admin, "can't have multiple super admins") if super_admin == true and super_admins.length >= 1
     end
 end
