@@ -2,8 +2,6 @@
 brazil = Country.create(name: 'Brasil')
 
 # Regions
-brazil = Country.where(name: 'Brasil').first
-
 brazilian_states = [
   'Acre', 'Alagoas', 'Amapá', 'Amazonas', 'Bahia', 'Ceará',
   'Distrito Federal', 'Espírito Santo', 'Goiás', 'Maranhão',
@@ -28,3 +26,11 @@ brazilian_states.each do |state|
   )
   i += 1
 end
+
+# Institutions
+Institution.create(
+  name: 'Senado',
+  member: 'senador',
+  member_plural: 'senadores',
+  country_id: brazil.id
+)

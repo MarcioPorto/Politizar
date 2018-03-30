@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180330213819) do
+ActiveRecord::Schema.define(version: 20180330224210) do
 
   create_table "countries", force: :cascade do |t|
     t.string "name"
@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 20180330213819) do
     t.integer "region_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "member"
+    t.string "member_plural"
     t.index ["country_id"], name: "index_institutions_on_country_id"
     t.index ["region_id"], name: "index_institutions_on_region_id"
   end
