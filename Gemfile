@@ -88,3 +88,6 @@ gem 'rails_email_preview', '~> 2.0', '>= 2.0.6'
 
 # Handle unsubscribes
 gem 'mailkick', '~> 0.1.4'
+
+# Email analytics
+# https://github.com/ankane/ahoy_email

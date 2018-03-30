@@ -37,7 +37,7 @@ bundle exec rspec spec/controllers/accounts_controller_spec.rb:8
 
 ## Remaining tasks
 
-The tasks listed here are in no specific order
+The tasks listed here are in no specific order.
 
 ### Near term
 
