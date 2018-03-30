@@ -1,5 +1,7 @@
+# Country, Region, Institution, Party, Representative, Bill, Vote, Project, LegalProcess
+
 # Country
-# (has_many: regions, institutions)
+# (has_many: regions, institutions, parties)
 # - name
 
 # Region
@@ -31,7 +33,6 @@
 # - justified_absences
 # - unjustified_absences
 # - last_presence_update
-
 # - party_id (fk)
 # - region_id (fk)
 # - institution_id (fk)
