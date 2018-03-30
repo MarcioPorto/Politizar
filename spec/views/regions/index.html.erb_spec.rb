@@ -5,11 +5,11 @@ RSpec.describe "regions/index", type: :view do
     assign(:regions, [
       Region.create!(
         :name => "Name",
-        :countries => nil
+        :country => nil
       ),
       Region.create!(
         :name => "Name",
-        :countries => nil
+        :country => nil
       )
     ])
   end

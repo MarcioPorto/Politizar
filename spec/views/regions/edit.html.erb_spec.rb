@@ -4,7 +4,7 @@ RSpec.describe "regions/edit", type: :view do
   before(:each) do
     @region = assign(:region, Region.create!(
       :name => "MyString",
-      :countries => nil
+      :country => nil
     ))
   end
 

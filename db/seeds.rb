@@ -2,6 +2,8 @@
 brazil = Country.create(name: 'Brasil')
 
 # Regions
+brazil = Country.where(name: 'Brasil').first
+
 brazilian_states = [
   'Acre', 'Alagoas', 'Amapá', 'Amazonas', 'Bahia', 'Ceará',
   'Distrito Federal', 'Espírito Santo', 'Goiás', 'Maranhão',

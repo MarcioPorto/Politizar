@@ -6,12 +6,12 @@ RSpec.describe "subscribers/index", type: :view do
       Subscriber.create!(
         :name => "Name",
         :email => "Email",
-        :regions => nil
+        :region => nil
       ),
       Subscriber.create!(
         :name => "Name",
         :email => "Email",
-        :regions => nil
+        :region => nil
       )
     ])
   end

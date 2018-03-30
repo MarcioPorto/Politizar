@@ -33,20 +33,20 @@ ActiveRecord::Schema.define(version: 20180330200938) do
 
   create_table "regions", force: :cascade do |t|
     t.string "name"
-    t.integer "countries_id"
+    t.integer "country_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "abbreviation"
-    t.index ["countries_id"], name: "index_regions_on_countries_id"
+    t.index ["country_id"], name: "index_regions_on_country_id"
   end
 
   create_table "subscribers", force: :cascade do |t|
     t.string "name"
     t.string "email"
-    t.integer "regions_id"
+    t.integer "region_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["regions_id"], name: "index_subscribers_on_regions_id"
+    t.index ["region_id"], name: "index_subscribers_on_region_id"
   end
 
 end

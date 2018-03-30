@@ -22,6 +22,6 @@ class HomeController < ApplicationController
   private
 
     def subscriber_params
-      params.require(:subscriber).permit(:name, :email, :regions_id)
+      params.require(:subscriber).permit(:name, :email, :region_id)
     end
 end

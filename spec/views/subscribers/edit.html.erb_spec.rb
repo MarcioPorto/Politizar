@@ -5,7 +5,7 @@ RSpec.describe "subscribers/edit", type: :view do
     @subscriber = assign(:subscriber, Subscriber.create!(
       :name => "MyString",
       :email => "MyString",
-      :regions => nil
+      :region => nil
     ))
   end
 

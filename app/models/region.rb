@@ -1,4 +1,4 @@
 class Region < ApplicationRecord
   has_many :subscribers
-  belongs_to :countries
+  belongs_to :country
 end

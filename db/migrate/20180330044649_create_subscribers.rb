@@ -3,7 +3,7 @@ class CreateSubscribers < ActiveRecord::Migration[5.1]
     create_table :subscribers do |t|
       t.string :name
       t.string :email
-      t.references :regions, foreign_key: true
+      t.references :region, foreign_key: true
 
       t.timestamps
     end

@@ -7,7 +7,7 @@
     <tr>
       <th>Name</th>
       <th>Email</th>
-      <th>Regions</th>
+      <th>Region</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -17,7 +17,7 @@
       <tr>
         <td><%= subscriber.name %></td>
         <td><%= subscriber.email %></td>
-        <td><%= subscriber.regions %></td>
+        <td><%= subscriber.region %></td>
         <td><%= link_to 'Show', subscriber %></td>
         <td><%= link_to 'Edit', edit_subscriber_path(subscriber) %></td>
         <td><%= link_to 'Destroy', subscriber, method: :delete, data: { confirm: 'Are you sure?' } %></td>

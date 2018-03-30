@@ -1,3 +1,3 @@
 class Subscriber < ApplicationRecord
-  belongs_to :regions
+  belongs_to :region
 end
