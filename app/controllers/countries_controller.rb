@@ -1,5 +1,6 @@
 class CountriesController < ApplicationController
   before_action :authenticate_admin!
+  load_and_authorize_resource
   before_action :set_country, only: [:show, :edit, :update, :destroy]
 
   # GET /countries
