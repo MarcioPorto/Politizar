@@ -94,3 +94,6 @@ gem 'mailkick', '~> 0.1.4'
 
 # Email analytics
 # https://github.com/ankane/ahoy_email
+
+# Error logging
+gem 'sentry-raven', '~> 2.7', '>= 2.7.2'
