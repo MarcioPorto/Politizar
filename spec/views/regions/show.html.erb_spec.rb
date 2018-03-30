@@ -4,6 +4,7 @@ RSpec.describe "regions/show", type: :view do
   before(:each) do
     @region = assign(:region, Region.create!(
       :name => "Name",
+      :abbreviation => "MyString",
       :country => nil
     ))
   end

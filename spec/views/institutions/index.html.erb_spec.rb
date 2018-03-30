@@ -5,11 +5,15 @@ RSpec.describe "institutions/index", type: :view do
     assign(:institutions, [
       Institution.create!(
         :name => "Name",
+        :member => "MyString",
+        :member_plural => "MyString",
         :country => nil,
         :region => nil
       ),
       Institution.create!(
         :name => "Name",
+        :member => "MyString",
+        :member_plural => "MyString",
         :country => nil,
         :region => nil
       )

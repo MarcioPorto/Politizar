@@ -4,6 +4,8 @@ RSpec.describe "institutions/new", type: :view do
   before(:each) do
     assign(:institution, Institution.new(
       :name => "MyString",
+      :member => "MyString",
+      :member_plural => "MyString",
       :country => nil,
       :region => nil
     ))
