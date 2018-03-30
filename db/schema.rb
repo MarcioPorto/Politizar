@@ -10,12 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180330200938) do
+ActiveRecord::Schema.define(version: 20180330213819) do
 
   create_table "countries", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "institutions", force: :cascade do |t|
+    t.string "name"
+    t.integer "country_id"
+    t.integer "region_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["country_id"], name: "index_institutions_on_country_id"
+    t.index ["region_id"], name: "index_institutions_on_region_id"
   end
 
   create_table "mailkick_opt_outs", force: :cascade do |t|
