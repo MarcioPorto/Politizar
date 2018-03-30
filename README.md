@@ -34,3 +34,23 @@ bundle exec rspec spec/controllers/accounts_controller_spec.rb:8
 ## Services (job queues, cache servers, search engines, etc.)
 
 ## Deployment instructions
+
+## Remaining tasks
+
+The tasks listed here are in no specific order
+
+### Near term
+
+- [ ] Add model relationships to automated tests
+- [ ] Create admin interface
+- [ ] Design UI
+- [ ] Implement UI
+- [ ] Design emails styling
+- [ ] Implement emails styling
+- [ ] Add subscriptions
+- [ ] Ability to manage (stop) subscriptions
+
+### Down the line
+
+- [ ] Retrieve news for representatives and display in weekly email
+- [ ] Add support for different countries
