@@ -50,6 +50,7 @@ The tasks listed here are in no specific order.
 - [ ] Implement emails styling
 - [ ] Add subscriptions
 - [ ] Choose mailing option
+- [ ] Add reCAPTCHA to subscribe form
 
 ### Down the line
 
