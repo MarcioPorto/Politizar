@@ -42,6 +42,7 @@ The tasks listed here are in no specific order.
 ### Near term
 
 - [x] Ability to unsubscribe
+- [ ] Seed database with country, region, and institution data
 - [ ] Add model relationships to automated tests
 - [ ] Create admin interface
 - [ ] Design UI
