@@ -55,19 +55,18 @@ The tasks listed here are in no specific order.
 
 - [x] Ability to unsubscribe
 - [x] Seed database with country, region, and institution data
-- [ ] Design UI
-- [ ] Implement UI
-- [ ] Design emails styling
-- [ ] Implement emails styling
-- [ ] Add subscriptions
+- [ ] Design and implement UI
+- [ ] Design and implement emails styling
+- [ ] Add ability to subscribe and unsubscribe from emails
 - [ ] Choose mailing option
 - [ ] Add reCAPTCHA to subscribe form
 - [ ] Have a plan in place for when calls to retrieve data fail
-- [x] Add Sentry for error logging
-- [ ] Add analytics tracking
+- [x] Add [Sentry](https://sentry.io/welcome/) for error logging
+- [x] Add [Google Analytics](https://www.google.com/analytics/) tracking
 
 ### Down the line
 
+- [ ] Move analytics suite to use [Segment](https://segment.com/) and a more robust analytics platform
 - [ ] Add model relationships to automated tests
 - [ ] Create admin interface
 - [ ] Retrieve news for representatives and display in weekly email
