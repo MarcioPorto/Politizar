@@ -10,6 +10,8 @@ This project uses Ruby version 2.5.0 and Rails version version 5.1.5.
 
 ## Configuration
 
+## Database creation/initialization
+
 ```
 rails db:migrate
 rails db:seed
@@ -21,10 +23,6 @@ Next, go to the console and create a super admin user:
 ```
 Admin.create(email: email, password: password, password_confirmation: password_confirmation, super_admin: true)
 ```
-
-## Database creation
-
-## Database initialization
 
 ## Tests:
 
@@ -47,6 +45,8 @@ bundle exec rspec spec/controllers/accounts_controller_spec.rb:8
 
 ## Deployment instructions
 
+Planning to host the project on [AWS](https://hackernoon.com/how-to-setup-and-deploy-a-rails-5-app-on-aws-beanstalk-with-postgresql-redis-and-more-88a38355f1ea).
+
 ## Remaining tasks
 
 The tasks listed here are in no specific order.
@@ -64,6 +64,7 @@ The tasks listed here are in no specific order.
 - [ ] Add reCAPTCHA to subscribe form
 - [ ] Have a plan in place for when calls to retrieve data fail
 - [x] Add Sentry for error logging
+- [ ] Add analytics tracking
 
 ### Down the line
 
