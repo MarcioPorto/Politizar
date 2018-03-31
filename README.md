@@ -43,8 +43,6 @@ The tasks listed here are in no specific order.
 
 - [x] Ability to unsubscribe
 - [x] Seed database with country, region, and institution data
-- [ ] Add model relationships to automated tests
-- [ ] Create admin interface
 - [ ] Design UI
 - [ ] Implement UI
 - [ ] Design emails styling
@@ -57,5 +55,7 @@ The tasks listed here are in no specific order.
 
 ### Down the line
 
+- [ ] Add model relationships to automated tests
+- [ ] Create admin interface
 - [ ] Retrieve news for representatives and display in weekly email
 - [ ] Add support for different countries

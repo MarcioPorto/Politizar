@@ -18,6 +18,7 @@
 # Party
 # (has_many: representatives)
 # - name
+# - description
 # - country_id (fk)
 
 # Representative 
