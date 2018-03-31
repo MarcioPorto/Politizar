@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Representatives</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Identifier</th>
+      <th>Name</th>
+      <th>Full name</th>
+      <th>Gender</th>
+      <th>Photo</th>
+      <th>Email</th>
+      <th>Total sessions</th>
+      <th>Present sessions</th>
+      <th>Justified absences</th>
+      <th>Unjustified absences</th>
+      <th>Last presence update</th>
+      <th>Party</th>
+      <th>Region</th>
+      <th>Institution</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @representatives.each do |representative| %>
+      <tr>
+        <td><%= representative.identifier %></td>
+        <td><%= representative.name %></td>
+        <td><%= representative.full_name %></td>
+        <td><%= representative.gender %></td>
+        <td><%= representative.photo %></td>
+        <td><%= representative.email %></td>
+        <td><%= representative.total_sessions %></td>
+        <td><%= representative.present_sessions %></td>
+        <td><%= representative.justified_absences %></td>
+        <td><%= representative.unjustified_absences %></td>
+        <td><%= representative.last_presence_update %></td>
+        <td><%= representative.party %></td>
+        <td><%= representative.region %></td>
+        <td><%= representative.institution %></td>
+        <td><%= link_to 'Show', representative %></td>
+        <td><%= link_to 'Edit', edit_representative_path(representative) %></td>
+        <td><%= link_to 'Destroy', representative, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Representative', new_representative_path %>

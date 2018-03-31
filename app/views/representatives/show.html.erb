@@ -1,0 +1,74 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Identifier:</strong>
+  <%= @representative.identifier %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @representative.name %>
+</p>
+
+<p>
+  <strong>Full name:</strong>
+  <%= @representative.full_name %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @representative.gender %>
+</p>
+
+<p>
+  <strong>Photo:</strong>
+  <%= @representative.photo %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @representative.email %>
+</p>
+
+<p>
+  <strong>Total sessions:</strong>
+  <%= @representative.total_sessions %>
+</p>
+
+<p>
+  <strong>Present sessions:</strong>
+  <%= @representative.present_sessions %>
+</p>
+
+<p>
+  <strong>Justified absences:</strong>
+  <%= @representative.justified_absences %>
+</p>
+
+<p>
+  <strong>Unjustified absences:</strong>
+  <%= @representative.unjustified_absences %>
+</p>
+
+<p>
+  <strong>Last presence update:</strong>
+  <%= @representative.last_presence_update %>
+</p>
+
+<p>
+  <strong>Party:</strong>
+  <%= @representative.party %>
+</p>
+
+<p>
+  <strong>Region:</strong>
+  <%= @representative.region %>
+</p>
+
+<p>
+  <strong>Institution:</strong>
+  <%= @representative.institution %>
+</p>
+
+<%= link_to 'Edit', edit_representative_path(@representative) %> |
+<%= link_to 'Back', representatives_path %>

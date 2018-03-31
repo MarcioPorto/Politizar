@@ -1,0 +1,25 @@
+
+<%= simple_form_for(@representative) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :identifier %>
+    <%= f.input :name %>
+    <%= f.input :full_name %>
+    <%= f.input :gender %>
+    <%= f.input :photo %>
+    <%= f.input :email %>
+    <%= f.input :total_sessions %>
+    <%= f.input :present_sessions %>
+    <%= f.input :justified_absences %>
+    <%= f.input :unjustified_absences %>
+    <%= f.input :last_presence_update %>
+    <%= f.association :party %>
+    <%= f.association :region %>
+    <%= f.association :institution %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
