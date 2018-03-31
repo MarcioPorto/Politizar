@@ -1,5 +1,5 @@
-# Country, Region, Institution, Party, Representative
-# Bill, Vote, Project, LegalProcess
+# Country, Region, Institution, Party, Representative, Bill
+# Vote, Project, LegalProcess
 
 # Country
 # (has_many: regions, institutions, parties)
