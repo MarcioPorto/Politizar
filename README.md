@@ -13,6 +13,13 @@ This project uses Ruby version 2.5.0 and Rails version version 5.1.5.
 ```
 rails db:migrate
 rails db:seed
+rake data:fetch_brazilian_senators
+```
+
+Next, go to the console and create a super admin user:
+
+```
+Admin.create(email: email, password: password, password_confirmation: password_confirmation, super_admin: true)
 ```
 
 ## Database creation
