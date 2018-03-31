@@ -41,16 +41,15 @@
 
 # Bill
 # (has_many: votes)
-# - identifier
-# - region
+# - identifier (s)
 # - description
-# - date
-# - result
-# - result_description
+# - vote_date
+# - result (s)
+# - result_description (s)
 # - institution_id (fk)
 
 # Vote
-# - vote
+# - vote (s)
 # - bill_id (fk)
 # - representative_id (fk)
 

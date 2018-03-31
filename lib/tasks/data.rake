@@ -80,17 +80,36 @@ namespace :data do
 
       votes = page.css('Votacao')
       votes.each do |vote|
-        # vote_date = Date.parse vote.css('DataSessao').text
-        # if vote_date >= min_date
-        #   Vote.create(
-        #     description: vote.css('DescricaoVotacao').text,
-        #     vote: vote.css('DescricaoVoto').text,
-        #     result: vote.css('DescricaoResultado').text,
-        #     description_of_result: vote.css('TextoTramitacao').text,
-        #     vote_date: vote_date,
-        #     representative_id: rep.id
-        #   )
-        # end
+        vote_date = Date.parse vote.css('DataSessao').text
+        
+        if vote_date >= min_date
+          identifier = vote.css('CodigoMateria').text
+
+          bill = Bill.where(identifier: identifier).first
+
+          if bill.nil?
+            # Create the bill
+            bill = Bill.create(
+              identifier: identifier,
+              description: vote.css('DescricaoVotacao').text,
+              vote_date: vote_date,
+              result: vote.css('DescricaoResultado').text,
+              result_description: vote.css('TextoTramitacao').text,
+              institution: institution
+            )
+          end
+          
+          # Only create this if it already hasn't been saved
+          vote = Vote.where(representative: rep, bill: bill)
+
+          if vote.nil?
+            Vote.create(
+              vote: vote.css('DescricaoVoto').text,
+              representative: rep,
+              bill: bill
+            )
+          end
+        end
       end
     end
   end
