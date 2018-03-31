@@ -4,23 +4,31 @@ require 'open-uri'
 namespace :data do
   desc "Retrieves basic data about a Brazilian senator."
   task fetch_brazilian_senators: :environment do
-    page = Nokogiri::XML(open('http://legis.senado.leg.br/dadosabertos/senador/lista/atual'))
+    brazil = Country.where(name: 'Brasil').first
 
-    representatives = page.css('Parlamentar')
+    unless brazil.nil?
+      page = Nokogiri::XML(open('http://legis.senado.leg.br/dadosabertos/senador/lista/atual'))
 
-    representatives.each do |representative|
-      identifier = representative.css('CodigoParlamentar').first.content
-      name = representative.css('NomeParlamentar').first.content
-      full_name = representative.css('NomeCompletoParlamentar').text
-      gender = representative.css('SexoParlamentar').text
-      position = representative.css('FormaTratamento').text
-      photo = representative.css('UrlFotoParlamentar').text
-      email = representative.css('EmailParlamentar').text
-      party = representative.css('SiglaPartidoParlamentar').text
-      region = representative.css('UfParlamentar').first.content
+      representatives = page.css('Parlamentar')
 
-      # TODO: save this data or update exisiting object appropriatelly
+      representatives.each do |representative|
+        identifier = representative.css('CodigoParlamentar').first.content
+        name = representative.css('NomeParlamentar').first.content
+        full_name = representative.css('NomeCompletoParlamentar').text
+        gender = representative.css('SexoParlamentar').text
+        position = representative.css('FormaTratamento').text
+        photo = representative.css('UrlFotoParlamentar').text
+        email = representative.css('EmailParlamentar').text
+        party = representative.css('SiglaPartidoParlamentar').text
+        region = representative.css('UfParlamentar').first.content
+
+        # TODO: create party if it doesn't exist yet
+
+        # TODO: save this data or update exisiting object appropriatelly
+      end
     end
+
+    # TODO: There is no Brazil
   end
 
   desc "Retrieves voting data for a Brazilian senator."
