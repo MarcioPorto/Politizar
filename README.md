@@ -10,6 +10,11 @@ This project uses Ruby version 2.5.0 and Rails version version 5.1.5.
 
 ## Configuration
 
+```
+rails db:migrate
+rails db:seed
+```
+
 ## Database creation
 
 ## Database initialization

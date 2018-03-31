@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180330225718) do
+ActiveRecord::Schema.define(version: 20180330235924) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -59,6 +59,15 @@ ActiveRecord::Schema.define(version: 20180330225718) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_mailkick_opt_outs_on_email"
     t.index ["subscriber_id", "subscriber_type"], name: "index_mailkick_opt_outs_on_subscriber_id_and_subscriber_type"
+  end
+
+  create_table "parties", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "country_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["country_id"], name: "index_parties_on_country_id"
   end
 
   create_table "regions", force: :cascade do |t|
