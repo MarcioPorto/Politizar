@@ -5,30 +5,61 @@ namespace :data do
   desc "Retrieves basic data about a Brazilian senator."
   task fetch_brazilian_senators: :environment do
     brazil = Country.where(name: 'Brasil').first
+    institution = Institution.where(
+      name: 'Senado', country: brazil
+    ).first
 
-    unless brazil.nil?
-      page = Nokogiri::XML(open('http://legis.senado.leg.br/dadosabertos/senador/lista/atual'))
+    page = Nokogiri::XML(open('http://legis.senado.leg.br/dadosabertos/senador/lista/atual'))
 
-      representatives = page.css('Parlamentar')
+    representatives = page.css('Parlamentar')
 
-      representatives.each do |representative|
-        identifier = representative.css('CodigoParlamentar').first.content
-        name = representative.css('NomeParlamentar').first.content
-        full_name = representative.css('NomeCompletoParlamentar').text
-        gender = representative.css('SexoParlamentar').text
-        position = representative.css('FormaTratamento').text
-        photo = representative.css('UrlFotoParlamentar').text
-        email = representative.css('EmailParlamentar').text
-        party = representative.css('SiglaPartidoParlamentar').text
-        region = representative.css('UfParlamentar').first.content
+    representatives.each do |representative|
+      identifier = representative.css('CodigoParlamentar').first.content
+      name = representative.css('NomeParlamentar').first.content
+      full_name = representative.css('NomeCompletoParlamentar').text
+      gender = representative.css('SexoParlamentar').text
+      position = representative.css('FormaTratamento').text
+      photo = representative.css('UrlFotoParlamentar').text
+      email = representative.css('EmailParlamentar').text
+      party = representative.css('SiglaPartidoParlamentar').text
+      region = representative.css('UfParlamentar').first.content
 
-        # TODO: create party if it doesn't exist yet
+      party_obj = Party.where(name: party, country: brazil).first
 
-        # TODO: save this data or update exisiting object appropriatelly
+      # Create party if it doesn't exist yet
+      if party_obj.nil?
+        party_obj = Party.create(
+          name: party, country: brazil
+        )
+      end
+
+      region_obj = Region.where(
+        abbreviation: region, country: brazil
+      ).first
+
+      representative_obj = Representative.where(
+        identifier: identifier, institution: institution
+      ).first
+
+      obj = {
+        identifier: identifier,
+        name: name,
+        full_name: full_name,
+        gender: gender, 
+        photo: photo, 
+        email: email,
+        party: party_obj,
+        region: region_obj,
+        institution: institution
+      }
+
+      # Save this data or update exisiting object appropriatelly
+      if representative_obj.nil?
+        Representative.create(obj)
+      else
+        Representative.update(obj)
       end
     end
-
-    # TODO: There is no Brazil
   end
 
   desc "Retrieves voting data for a Brazilian senator."

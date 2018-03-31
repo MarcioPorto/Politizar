@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180330235924) do
+ActiveRecord::Schema.define(version: 20180331001023) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -77,6 +77,28 @@ ActiveRecord::Schema.define(version: 20180330235924) do
     t.datetime "updated_at", null: false
     t.string "abbreviation"
     t.index ["country_id"], name: "index_regions_on_country_id"
+  end
+
+  create_table "representatives", force: :cascade do |t|
+    t.string "identifier"
+    t.string "name"
+    t.string "full_name"
+    t.string "gender"
+    t.string "photo"
+    t.string "email"
+    t.integer "total_sessions"
+    t.integer "present_sessions"
+    t.integer "justified_absences"
+    t.integer "unjustified_absences"
+    t.string "last_presence_update"
+    t.integer "party_id"
+    t.integer "region_id"
+    t.integer "institution_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["institution_id"], name: "index_representatives_on_institution_id"
+    t.index ["party_id"], name: "index_representatives_on_party_id"
+    t.index ["region_id"], name: "index_representatives_on_region_id"
   end
 
   create_table "subscribers", force: :cascade do |t|
