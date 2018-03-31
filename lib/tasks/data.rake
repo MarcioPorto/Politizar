@@ -64,28 +64,33 @@ namespace :data do
 
   desc "Retrieves voting data for a Brazilian senator."
   task fetch_brazilian_senators_votes: :environment do
-    min_date = Date.today.to_date - 10
+    # 7 days ago
+    min_date = Date.today.to_date - 7
+
+    brazil = Country.where(name: 'Brasil').first
+    senate = Institution.where(name: 'Senado', country: brazil).first
 
     # TODO: Only get the senators here
-    reps = Representative.all
-    reps.each do |rep|
+    representatives = Representative.where(institution: senate)
+
+    representatives.each do |rep|
       page = Nokogiri::XML(open(
-        'http://legis.senado.leg.br/dadosabertos/senador/' + rep.identifier.to_s + '/votacoes'
+        'http://legis.senado.leg.br/dadosabertos/senador/' + rep.identifier + '/votacoes'
       ))
 
       votes = page.css('Votacao')
       votes.each do |vote|
-        vote_date = Date.parse vote.css('DataSessao').text
-        if vote_date >= min_date
-          RecentVote.create(
-            description: vote.css('DescricaoVotacao').text,
-            vote: vote.css('DescricaoVoto').text,
-            result: vote.css('DescricaoResultado').text,
-            description_of_result: vote.css('TextoTramitacao').text,
-            vote_date: vote_date,
-            representative_id: rep.id
-          )
-        end
+        # vote_date = Date.parse vote.css('DataSessao').text
+        # if vote_date >= min_date
+        #   Vote.create(
+        #     description: vote.css('DescricaoVotacao').text,
+        #     vote: vote.css('DescricaoVoto').text,
+        #     result: vote.css('DescricaoResultado').text,
+        #     description_of_result: vote.css('TextoTramitacao').text,
+        #     vote_date: vote_date,
+        #     representative_id: rep.id
+        #   )
+        # end
       end
     end
   end
