@@ -182,4 +182,50 @@ namespace :data do
 
     puts "This operation took %s minutes and %s seconds." % [minutes, seconds]
   end
+
+  desc 'Fetch Brazilian Senate presence'
+  task fetch_brazilian_senate_presence: :environment do
+    # Presense data doesn't seem to be available anymore.
+    # Look at politicos.org.br to find other interesting data
+
+    start = Time.now
+
+    brazil = Country.where(name: 'Brasil').first
+    senate = Institution.where(name: 'Senado', country: brazil).first
+    representatives = Representative.where(institution: senate)
+
+    representatives.each do |rep|
+      url = 'http://www.politicos.org.br/' + rep.full_name.parameterize
+
+      total_sessions = 0
+      present_sessions = 0
+      justified_absences = 0
+      unjustified_absences = 0
+      last_presence_update = ''
+      
+      begin
+        doc = Nokogiri::HTML(open(url))
+        begin
+          total_sessions = doc.at_css('#presence td:nth-child(2)').text
+          present_sessions = doc.at_css('#presence td:nth-child(3)').text
+          justified_absences = doc.at_css('#presence td:nth-child(4)').text
+          unjustified_absences = doc.at_css('#presence td:nth-child(5)').text
+          last_presence_update = doc.at_css('#presence .text-right').text
+        rescue NoMethodError
+          # TODO: LOG
+        end
+      rescue OpenURI::HTTPError
+        # TODO: LOG
+      rescue Errno::ETIMEDOUT
+        # TODO: LOG
+      end
+
+      rep.total_sessions = total_sessions
+      rep.present_sessions = present_sessions
+      rep.justified_absences = justified_absences
+      rep.unjustified_absences = unjustified_absences
+      rep.last_presence_update = last_presence_update
+      rep.save
+    end
+  end
 end
