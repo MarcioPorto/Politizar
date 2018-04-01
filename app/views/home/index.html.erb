@@ -1,4 +1,4 @@
-<h1>Politizar</h1>
+<h1>Vigios</h1>
 
 <p>Atualmente temos <strong><%= @subscribers %></strong> emails registrados. Seja parte dos nossos primeiros 1000 usuários.</p>
 
@@ -13,7 +13,7 @@
 
       <div class="form-inputs">
         <%= f.input :name, label: 'Nome' %>
-        <%= f.input :email %>
+        <%= f.input :email, type: 'email' %>
         <%= f.input :region_id, label: 'Estado', collection: @regions, label_method: :name %>
       </div>
 

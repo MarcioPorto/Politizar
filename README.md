@@ -59,7 +59,7 @@ The tasks listed here are in no specific order.
 - [ ] Design and implement emails styling
 - [ ] Add ability to subscribe and unsubscribe from emails
 - [ ] Choose mailing option
-- [ ] Add reCAPTCHA to subscribe form
+- [ ] Add [reCAPTCHA](https://github.com/ambethia/recaptcha) to subscribe form
 - [ ] Have a plan in place for when calls to retrieve data fail
 - [x] Add [Sentry](https://sentry.io/welcome/) for error logging
 - [x] Add [Google Analytics](https://www.google.com/analytics/) tracking

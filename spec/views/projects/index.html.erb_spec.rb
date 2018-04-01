@@ -7,12 +7,14 @@ RSpec.describe "projects/index", type: :view do
         :name => "Name",
         :description => "MyText",
         :status => "Status",
+        :identifier => "MyString",
         :representative => nil
       ),
       Project.create!(
         :name => "Name",
         :description => "MyText",
         :status => "Status",
+        :identifier => "MyString",
         :representative => nil
       )
     ])

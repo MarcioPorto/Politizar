@@ -71,8 +71,6 @@ namespace :data do
 
     brazil = Country.where(name: 'Brasil').first
     senate = Institution.where(name: 'Senado', country: brazil).first
-
-    # TODO: Only get the senators here
     representatives = Representative.where(institution: senate)
 
     representatives.each do |rep|
@@ -118,7 +116,70 @@ namespace :data do
     finish = Time.now
     
     duration = finish - start
+    seconds = duration % 60
+    minutes = (duration - seconds) / 60
+
+    puts "This operation took %s minutes and %s seconds." % [minutes.to_s, seconds.to_s]
+  end
+
+  desc 'Fetch Brazilian Senate projets'
+  task fetch_brazilian_senate_projects: :environment do
+    start = Time.now
+
+    brazil = Country.where(name: 'Brasil').first
+    senate = Institution.where(name: 'Senado', country: brazil).first
+    reps = Representative.where(institution: senate)
+
+    # Get projects updated in the last 7 days
+    updated_project_identifiers = []
+
+    doc = Nokogiri::XML(open(
+      'http://legis.senado.leg.br/dadosabertos/materia/atualizadas?numdias=7'
+    ))
+
+    projects = doc.css('Materia')
+    projects.each do |project|
+      updated_project_identifiers.push(
+        project.css('CodigoMateria').text
+      )
+    end
+
+    reps.each do |rep|
+      doc = Nokogiri::XML(open('http://legis.senado.leg.br/dadosabertos/senador/' + rep.identifier + '/autorias?tramitando=s'))
+      
+      projects = doc.css('Materia')
+      
+      projects.each do |project|
+        project_identifier = project.css('CodigoMateria').text
+
+        obj = {
+          identifier: project_identifier,
+          description: project.css('EmentaMateria').text,
+          status: project.css('DescricaoSituacao').text,
+          representative: rep
+        }
+
+        project = Project.where(identifier: project_identifier).first
+
+        if updated_project_identifiers.include? project_identifier
+          if project.nil?
+            Project.create(obj)
+          else
+            project.description = obj[:description]
+            project.status = obj[:status]
+            project.save
+          end
+        end
+      end
+    end
+
+    finish = Time.now
     
-    puts "This operation took %s seconds (%s minutes)." % [duration.to_s, (duration / 60).to_s]
+    duration = finish - start
+    seconds = duration % 60
+    minutes = ((duration - seconds) / 60).to_i.to_s
+    seconds = seconds.to_i.to_s
+
+    puts "This operation took %s minutes and %s seconds." % [minutes, seconds]
   end
 end

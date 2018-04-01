@@ -3,6 +3,7 @@ FactoryBot.define do
     name "MyString"
     description "MyText"
     status "MyString"
+    identifier "MyString"
     representative nil
   end
 end

@@ -6,6 +6,7 @@ RSpec.describe "projects/edit", type: :view do
       :name => "MyString",
       :description => "MyText",
       :status => "MyString",
+      :identifier => "MyString",
       :representative => nil
     ))
   end
