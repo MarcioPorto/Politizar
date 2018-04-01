@@ -128,7 +128,7 @@ namespace :data do
 
     brazil = Country.where(name: 'Brasil').first
     senate = Institution.where(name: 'Senado', country: brazil).first
-    reps = Representative.where(institution: senate)
+    representatives = Representative.where(institution: senate)
 
     # Get projects updated in the last 7 days
     updated_project_identifiers = []
@@ -144,7 +144,7 @@ namespace :data do
       )
     end
 
-    reps.each do |rep|
+    representatives.each do |rep|
       doc = Nokogiri::XML(open('http://legis.senado.leg.br/dadosabertos/senador/' + rep.identifier + '/autorias?tramitando=s'))
       
       projects = doc.css('Materia')
@@ -226,6 +226,41 @@ namespace :data do
       rep.unjustified_absences = unjustified_absences
       rep.last_presence_update = last_presence_update
       rep.save
+    end
+  end
+
+  desc 'Fetch Brazilian Senate legal processes'
+  task fetch_brazilian_senate_legal_processes: :environment do
+    start = Time.now
+
+    brazil = Country.where(name: 'Brasil').first
+    senate = Institution.where(name: 'Senado', country: brazil).first
+    representatives = Representative.where(institution: senate)
+
+    representatives.each do |rep|
+      url = 'http://www.politicos.org.br/' + rep.full_name.parameterize
+      begin
+        doc = Nokogiri::HTML(open(url))
+
+        begin
+          has_any_processes = doc.at_css('.msg b').text
+          LegalProcess.create(
+            description: has_any_processes,
+            representative_id: rep.id
+          )
+        rescue NoMethodError
+          doc.css('#process td').each do |item|
+            LegalProcess.create(
+              description: item.text,
+              representative_id: rep.id
+            )
+          end
+        end
+      rescue OpenURI::HTTPError
+        puts rep.name
+      rescue Errno::ETIMEDOUT
+        puts rep.name
+      end
     end
   end
 end
