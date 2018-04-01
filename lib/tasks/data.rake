@@ -64,8 +64,10 @@ namespace :data do
 
   desc "Retrieves voting data for a Brazilian senator."
   task fetch_brazilian_senators_votes: :environment do
-    # 7 days ago
-    min_date = Date.today.to_date - 7
+    start = Time.now
+
+    # 14 days ago
+    min_date = Date.today.to_date - 14
 
     brazil = Country.where(name: 'Brasil').first
     senate = Institution.where(name: 'Senado', country: brazil).first
@@ -95,11 +97,11 @@ namespace :data do
               vote_date: vote_date,
               result: vote.css('DescricaoResultado').text,
               result_description: vote.css('TextoTramitacao').text,
-              institution: institution
+              institution: senate
             )
           end
           
-          # Only create this if it already hasn't been saved
+          # Only create this if it hasn't been saved already
           vote = Vote.where(representative: rep, bill: bill)
 
           if vote.nil?
@@ -112,5 +114,11 @@ namespace :data do
         end
       end
     end
+
+    finish = Time.now
+    
+    duration = finish - start
+    
+    puts "This operation took %s seconds (%s minutes)." % [duration.to_s, (duration / 60).to_s]
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180331001023) do
+ActiveRecord::Schema.define(version: 20180331235449) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -28,6 +28,18 @@ ActiveRecord::Schema.define(version: 20180331001023) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "bills", force: :cascade do |t|
+    t.string "identifier"
+    t.text "description"
+    t.date "vote_date"
+    t.string "result"
+    t.text "result_description"
+    t.integer "institution_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["institution_id"], name: "index_bills_on_institution_id"
   end
 
   create_table "countries", force: :cascade do |t|
@@ -108,6 +120,16 @@ ActiveRecord::Schema.define(version: 20180331001023) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["region_id"], name: "index_subscribers_on_region_id"
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.string "description"
+    t.integer "bill_id"
+    t.integer "representative_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bill_id"], name: "index_votes_on_bill_id"
+    t.index ["representative_id"], name: "index_votes_on_representative_id"
   end
 
 end
